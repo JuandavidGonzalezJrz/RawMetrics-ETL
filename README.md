@@ -73,8 +73,9 @@ This prevents legitimate zero-power values from being overwritten by synthetic d
 ```text
 RawMetrics-ETL/
 │
-├── extractor.py       # FIT parsing and raw DataFrame generation
-├── cleaner.py         # Domain-aware telemetry cleaning
+├── extractor.py                  # FIT parsing and raw DataFrame generation
+├── cleaner.py                    # Domain-aware telemetry cleaning
+├── demo_simulated_dropouts.py    # Controlled synthetic dropout demonstration
 ├── .gitignore
 └── README.md
 ```
@@ -158,6 +159,7 @@ The project follows several data-engineering principles:
 * [x] Power dropout detection
 * [x] Bounded time-based interpolation
 * [x] Modular extraction and cleaning stages
+* [x] Controlled synthetic dropout demonstration
 
 ### Planned
 
