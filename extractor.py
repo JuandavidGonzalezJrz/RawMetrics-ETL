@@ -34,33 +34,29 @@ class FITExtractor:
 
 
 if __name__ == "__main__":
-    ()
+    # extractor is the name robot
+    extractor = FITExtractor("training.fit")
+    extractor.extract_raw_data()
+    df_final = extractor.to_dataframe()
 
-# extractor is the name robot
-extractor = FITExtractor("training.fit")
-extractor.extract_raw_data()
-df_final = extractor.to_dataframe()
+    df_final["enhanced_speed"] = df_final["enhanced_speed"] * 3.6
 
-df_final["enhanced_speed"] = df_final["enhanced_speed"] * 3.6
+    time_to_try = df_final.index.min()
 
-time_to_try = df_final.index.min()
+    time_lapse = df_final.loc[
+        time_to_try + pd.Timedelta(minutes=52) : time_to_try
+        + pd.Timedelta(minutes=52, seconds=20)
+    ]
 
-time_lapse = df_final.loc[
-    time_to_try + pd.Timedelta(minutes=52) : time_to_try
-    + pd.Timedelta(minutes=52, seconds=20)
-]
+    # print("Columnas extraidas")
+    # print(df_final.columns.tolist())
 
-
-# print("Columnas extraidas")
-# print(df_final.columns.tolist())
-
-
-print("Muestra de metricas principales:")
-print(
-    time_lapse[["power", "cadence", "heart_rate", "temperature", "enhanced_speed"]]
-    .dropna(
-        subset=["power", "cadence", "heart_rate", "temperature", "enhanced_speed"],
-        how="all",
+    print("Muestra de metricas principales:")
+    print(
+        time_lapse[["power", "cadence", "heart_rate", "temperature", "enhanced_speed"]]
+        .dropna(
+            subset=["power", "cadence", "heart_rate", "temperature", "enhanced_speed"],
+            how="all",
+        )
+        .head()
     )
-    .head()
-)
