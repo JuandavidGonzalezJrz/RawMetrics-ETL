@@ -1,6 +1,6 @@
 # RawMetrics-ETL
 
-RawMetrics-ETL is a Python-based ETL project for extracting and cleaning time-series telemetry from `.FIT` activity files.
+RawMetrics-ETL is a Python-based data pipeline for extracting, structuring, and cleaning time-series telemetry from .FIT activity files.
 
 The project focuses on preserving the temporal structure of sensor data while applying domain-aware cleaning rules to cycling telemetry such as power, cadence, heart rate, speed, temperature, and other metrics available in FIT `record` messages.
 
@@ -91,7 +91,7 @@ RawMetrics-ETL/
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/JuandavidGonzalezJrz/RawMetrics-ETL.git
 cd RawMetrics-ETL
 ```
 
